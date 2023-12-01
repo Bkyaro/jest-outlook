@@ -2,4 +2,11 @@ function addNum(a, b) {
   return a + b;
 }
 
-module.exports = addNum;
+function cloneObj(obj) {
+  return { ...obj };
+}
+
+module.exports = {
+  addNum,
+  cloneObj,
+};
