@@ -63,8 +63,28 @@ test("test STRING", () => {
 
 test("test Array", () => {
   var testArr = ["diapers", "kleenex", "trash bags", "paper towels", "milk"];
-  var testContainArry = ['milk', 'kleenex']
-  var testIterables = new Set(testArr)
-  expect(testIterables).toContain('kleenex') // detect if arr or iterables contains item 'diapers
-  expect(testArr).toEqual(expect.arrayContaining(testContainArry)) // detect if arrayB is a subset of arrayA
+  var testContainArry = ["milk", "kleenex"];
+  var testIterables = new Set(testArr);
+  expect(testIterables).toContain("kleenex"); // detect if arr or iterables contains item 'diapers
+  expect(testArr).toEqual(expect.arrayContaining(testContainArry)); // detect if arrayB is a subset of arrayA
+});
+
+/** EXCEPTIONS */
+
+test("test EXCEPTIONS", () => {
+  const compileAndroidCode = () => {
+    throw new Error("you are using the wrong JDK!");
+  };
+
+  // when testing funtion exceptions, we should call the funtion with arrow function wrapping in expect, otherwise test will not pass
+  expect(() => compileAndroidCode()).toThrow();
+  expect(() => compileAndroidCode()).toThrow(Error);
+
+  // You can also use a string that must be contained in the error message or a regexp
+  expect(() => compileAndroidCode()).toThrow("you are using the wrong JDK");
+  expect(() => compileAndroidCode()).toThrow(/JDK/);
+
+  // Or you can match an exact error message using a regexp like below
+  expect(() => compileAndroidCode()).toThrow(/^you are using the wrong JDK$/); // Test fails
+  expect(() => compileAndroidCode()).toThrow(/^you are using the wrong JDK!$/); // Test pass
 });
