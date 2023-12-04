@@ -32,3 +32,20 @@ test("test TRUTHNIESS", () => {
   expect(testTruthy).toBeTruthy();
   expect(testFalsy).toBeFalsy();
 });
+
+/** NUMBER */
+
+// numbers comparing matchers( > >= < <= == === ≈)
+test("test Number", () => {
+  var testNumber = 5;
+  var testFloat = 0.1 + 0.2;
+  expect(testNumber).toBeGreaterThan(4);
+  expect(testNumber).toBeLessThan(6);
+  expect(testNumber).toBeGreaterThanOrEqual(5);
+  expect(testNumber).toBeLessThanOrEqual(5);
+  expect(testNumber).toEqual(5);
+  expect(testNumber).toBe(5); // strict equality
+
+  // since 0.1 + 0.2 is not equal to 0.3 in js, in some case when comparing floating numbers, we use .toBeCloseTo to avoid rounding error
+  expect(testFloat).toBeCloseTo(0.3);
+});
