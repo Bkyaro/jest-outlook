@@ -49,3 +49,12 @@ test("test Number", () => {
   // since 0.1 + 0.2 is not equal to 0.3 in js, in some case when comparing floating numbers, we use .toBeCloseTo to avoid rounding error
   expect(testFloat).toBeCloseTo(0.3);
 });
+
+/** String */
+
+// jest string comparing use regexp
+test('test STRING', ()=>{
+    var testString = 'JestOutlook'
+    expect(testString).toMatch(/J/) // regexp indicated that jest will judge if testString contains J
+    expect(testString).toMatch(/look/)
+})
