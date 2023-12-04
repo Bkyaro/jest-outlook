@@ -53,8 +53,18 @@ test("test Number", () => {
 /** String */
 
 // jest string comparing use regexp
-test('test STRING', ()=>{
-    var testString = 'JestOutlook'
-    expect(testString).toMatch(/J/) // regexp indicated that jest will judge if testString contains J
-    expect(testString).toMatch(/look/)
-})
+test("test STRING", () => {
+  var testString = "JestOutlook";
+  expect(testString).toMatch(/J/); // regexp indicated that jest will judge if testString contains J
+  expect(testString).toMatch(/look/);
+});
+
+/** Arrays & iterables */
+
+test("test Array", () => {
+  var testArr = ["diapers", "kleenex", "trash bags", "paper towels", "milk"];
+  var testContainArry = ['milk', 'kleenex']
+  var testIterables = new Set(testArr)
+  expect(testIterables).toContain('kleenex') // detect if arr or iterables contains item 'diapers
+  expect(testArr).toEqual(expect.arrayContaining(testContainArry)) // detect if arrayB is a subset of arrayA
+});
